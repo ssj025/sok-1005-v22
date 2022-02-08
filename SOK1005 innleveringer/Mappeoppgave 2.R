@@ -5,8 +5,9 @@ library(ggplot2)
 Covid <-fromJSON("https://static01.nyt.com/newsgraphics/2021/12/20/us-coronavirus-deaths-2021/ff0adde21623e111d8ce103fedecf7ffc7906264/scatter.json")
 head(Covid)
 tail(Covid)
+#oppg1
 
-#inspirert av løsningen til https://stackoverflow.com/questions/27433798/how-can-i-change-the-y-axis-figures-into-percentages-in-a-barplot
+#inspirert av lÃ¸sningen til https://stackoverflow.com/questions/27433798/how-can-i-change-the-y-axis-figures-into-percentages-in-a-barplot
 
 
 lvhd <- paste("Lower vaccination rate,
@@ -14,7 +15,7 @@ lvhd <- paste("Lower vaccination rate,
 
 ldhv <- paste("Higher vaccination rate,
                lower death rate")
-#prøvde mitt beste men klarte ikke å forkorte navenene med en kode, eller å få bort 0 tallet på y aksen.
+#prÃ¸vde mitt beste men klarte ikke Ã¥ forkorte navenene med en kode, eller Ã¥ fÃ¥ bort 0 tallet pÃ¥ y aksen.
  Covidplot<- Covid %>% 
   ggplot(aes(x=fully_vaccinated_pct_of_pop, y=deaths_per_100k, group=name, label=name))+ 
   geom_point(size = 2.5, color= "turquoise") +geom_text(hjust=0.5, vjust=-1.2, size = 3, check_overlap = TRUE, ) +
@@ -59,7 +60,7 @@ oppg2b <- ggplot(Covid, aes(fully_vaccinated_pct_of_pop,deaths_per_100k, label=n
 
 oppg2b + geom_smooth(method = lm)
 
-# jeg tolker at for at linjen er en formel som består av intercept og fvpop(fully vaccinated pct of pop)
-#der disse er de konstante tallene vi har i formelen. jeg antar når intercepten øker med 31.15 så endres fvpop med 
+# jeg tolker at for at linjen er en formel som bestÃ¥r av intercept og fvpop(fully vaccinated pct of pop)
+#der disse er de konstante tallene vi har i formelen. jeg antar nÃ¥r intercepten Ã¸ker med 31.15 sÃ¥ endres fvpop med 
 #-36.66 * x som ender med linjen vi ser i grafen.
 
